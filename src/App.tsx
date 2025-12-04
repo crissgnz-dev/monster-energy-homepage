@@ -9,6 +9,8 @@ function App() {
     <>
       <Header />
       <Hero />
+      <News />
+      <Ambassador />
       <Footer />
     </>
   );

@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 
 import MonsterEnergy from "../assets/can/monster-energy.png";
 import MonsterEnergyMangoLoco from "../assets/can/monster-energy-mango-loco.png";
@@ -9,7 +9,6 @@ import MonsterEnergyUltraWatermelon from "../assets/can/monster-energy-ultra-wat
 import MonsterEnergyUltraSunrise from "../assets/can/monster-energy-ultra-sunrise.png";
 
 import Cart from "../assets/general/cart.svg";
-import Arrow from "../assets/general/arrow.svg";
 
 export default function Hero() {
   const MonsterEnergyList = [
@@ -71,7 +70,7 @@ export default function Hero() {
     },
   ];
 
-  const [title, setTitle] = useState("MONSTER ENERGY");
+  const [title, setTitle] = useState("Monster Energy");
 
   const [description, setDescription] = useState(
     "Monster Energy Original es un golpe energético que te da todo el poder que necesitas mientras te brinda una experiencia suave."
@@ -131,7 +130,7 @@ export default function Hero() {
                 <img src={monster.image} className="w-5 z-20" />
                 {monster.title === title ? (
                   <div
-                    className="w-4 h-8 bg-amber-200 absolute top-0 mx-1 mt-5"
+                    className="w-2 h-8 bg-stone-900 absolute top-0 mx-1 mt-5"
                     style={{
                       filter: `drop-shadow(0px 10px 15px ${color}`,
                       zIndex: -1,
