@@ -2,10 +2,22 @@ import icon from "/monster-energy-icon.png";
 import menu from "../assets/general/menu.svg";
 import Cross from "../assets/general/cross.svg";
 import Github from "../assets/social-media/github.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const [handleOpenMenu, setHandleOpenMenu] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener("click", () => {
+      setHandleOpenMenu(false);
+    });
+
+    return () => {
+      document.removeEventListener("click", () => {
+        setHandleOpenMenu(false);
+      });
+    };
+  }, []);
 
   return (
     <>
@@ -14,41 +26,54 @@ export default function Header() {
           <img src={icon} alt="" />
         </div>
 
-        <button
-          className="w-8 cursor-pointer"
-          onClick={() => setHandleOpenMenu(true)}
+        <div
+          className="flex justify-items-center"
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
         >
-          <img src={menu} alt="" />
-        </button>
+          <button
+            className="w-8 cursor-pointer"
+            onClick={() => setHandleOpenMenu(true)}
+          >
+            <img src={menu} alt="" />
+          </button>
+        </div>
       </div>
 
       {handleOpenMenu ? (
-        <div className="flex flex-col w-xs bg-stone-900 fixed top-0 right-0 z-30 h-full">
+        <div
+          className="flex flex-col w-xs bg-stone-900 fixed top-0 right-0 z-30 h-full transition"
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
+        >
           <button
-            className="w-8 self-end m-8 cursor-pointer"
+            className="w-8 self-end m-5 mt-8 cursor-pointer"
             onClick={() => setHandleOpenMenu(false)}
           >
             <img src={Cross} alt="" />
           </button>
           <nav className="flex flex-col items-center text-center p-5 gap-10">
-            <a href="#" className="text-3xl">
+            <a href="#" className="text-3xl p-1 w-full">
               INICIO
             </a>
-            <a href="#" className="text-3xl">
+            <a href="#" className="text-3xl p-1 w-full">
               NOVEDADES
             </a>
-            <a href="#" className="text-3xl">
+            <a href="#" className="text-3xl p-1 w-full">
               ATLETAS
             </a>
-            <a href="#" className="text-3xl">
+            <a href="#" className="text-3xl p-1 w-full">
               PROMOCIONES
             </a>
-            <a href="#" className="text-3xl">
+            <a href="#" className="text-3xl p-1 w-full">
               EVENTOS
             </a>
           </nav>
           <a
-            href="#"
+            href="https://github.com/crissgnz-dev"
+            target="_blank"
             className="bg-stone-800 text-center flex justify-center items-center self-center mt-5 gap-2 px-4 py-2 rounded-lg absolute bottom-8"
           >
             <img src={Github} className="w-6" />
