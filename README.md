@@ -61,5 +61,3 @@ El objetivo principal es:
     npm run dev
     ```
 5.  **Abre tu navegador** y visita la dirección `http://localhost:5173/monster-energy-homepage` que se muestre en tu terminal.
-
----
